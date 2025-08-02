@@ -6,6 +6,7 @@ import {
   orthographyUseCase,
   prosConsDicusserStreamUseCase,
   prosConsDicusserUseCase,
+  textToAudioGetterUseCase,
   textToAudioUseCase,
   translateUseCase,
 } from './use-cases';
@@ -45,5 +46,9 @@ export class GptService {
 
   async textToAudio({ prompt, voice }: TextToAudioDto) {
     return await textToAudioUseCase(this.openai, { prompt, voice });
+  }
+
+  async textToAudioGetter(fileId: string) {
+    return await textToAudioGetterUseCase(fileId);
   }
 }
