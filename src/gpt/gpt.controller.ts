@@ -18,6 +18,7 @@ import { GptService } from './gpt.service';
 
 /* Dtos */
 import {
+  AudioToTextDto,
   OrthographyDto,
   ProsConsDiscusserDto,
   TextToAudioDto,
@@ -107,7 +108,8 @@ export class GptController {
   async audioToText(
     @UploadedFile(AudioFileValidationPipe)
     file: Express.Multer.File,
+    @Body() audioToTextDto: AudioToTextDto,
   ) {
-    return this.gptService.audioToText(file);
+    return this.gptService.audioToText(file, audioToTextDto);
   }
 }
