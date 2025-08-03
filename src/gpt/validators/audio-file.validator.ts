@@ -5,6 +5,7 @@ export class AudioFileValidationPipe implements PipeTransform {
   private readonly allowedMimeTypes = [
     'audio/mpeg',
     'audio/mp3',
+    'audio/mp4',
     'audio/wav',
     'audio/m4a',
     'audio/aac',

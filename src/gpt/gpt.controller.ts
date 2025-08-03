@@ -108,7 +108,6 @@ export class GptController {
     @UploadedFile(AudioFileValidationPipe)
     file: Express.Multer.File,
   ) {
-    console.log(file);
-    return 'done';
+    return this.gptService.audioToText(file);
   }
 }
