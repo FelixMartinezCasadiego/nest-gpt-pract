@@ -30,11 +30,11 @@ export const imageGenerationUseCase = async (
     return console.error('response.data === null');
 
   // * Save image in FS
-  await dowloandImageAsPng(response.data[0].url);
+  const url = await dowloandImageAsPng(response.data[0].url);
 
   return {
-    url: response.data[0].url,
-    local: '',
+    url: url,
+    openAIUrl: response.data[0].url,
     revised_prompt: response.data[0].revised_prompt,
   };
 };
