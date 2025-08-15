@@ -25,6 +25,7 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
+    "@openai/agents": "^0.0.16",
     "add": "^2.0.6",
     "body-parser": "^2.2.0",
     "class-transformer": "^0.5.1",
