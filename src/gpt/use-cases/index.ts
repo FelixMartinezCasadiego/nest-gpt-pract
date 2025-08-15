@@ -8,3 +8,4 @@ export * from './audio-to-text.use-case';
 export * from './image-generation.use-case';
 export * from './image-generation-getter.use-case';
 export * from './image-variation.use-case';
+export * from './javascript-developer.use-case';

@@ -19,6 +19,7 @@ import { GptService } from './gpt.service';
 /* Dtos */
 import {
   AudioToTextDto,
+  JavascriptDeveloperDto,
   ImageGenerationDto,
   ImageVariationDto,
   OrthographyDto,
@@ -134,5 +135,10 @@ export class GptController {
   @Post('image-variation')
   async imageVariation(@Body() imageVariationDto: ImageVariationDto) {
     return await this.gptService.imageVariation(imageVariationDto);
+  }
+
+  @Post('javascript-developer')
+  javascriptDeveloper(@Body() JavascriptDeveloperDto: JavascriptDeveloperDto) {
+    return this.gptService.javascriptDeveloper(JavascriptDeveloperDto);
   }
 }
