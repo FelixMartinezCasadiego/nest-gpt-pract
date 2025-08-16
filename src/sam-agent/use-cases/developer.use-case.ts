@@ -23,6 +23,10 @@ const conversationHistory = new Map<string, Message[]>();
 export const developerUseCase = async (options: Options) => {
   const { prompt, conversationId, model = 'gpt-4o-mini' } = options;
 
+  if (!prompt.trim()) {
+    throw new Error('The prompt cannot be empty.');
+  }
+
   try {
     const history = conversationHistory.get(conversationId) || [];
 
@@ -31,15 +35,15 @@ export const developerUseCase = async (options: Options) => {
       model: model,
       tools: [webSearchToolGoogle],
       instructions: `
-        Eres un asistente experto en desarrollo de software. 
-        Tu rol es ayudar a los desarrolladores con sus consultas técnicas,
-        proporcionando código limpio, buenas prácticas y explicaciones claras.
+        You are an expert software development assistant.
+        Your role is to help developers with their technical queries,
+        providing clean code, best practices, and clear explanations.
 
-        Si no tienes suficiente información para responder, busca en la web.
-        
-        Contexto de la conversación: ${conversationId}
-        
-        Instrucciones adicionales: ${prompt}
+        If you don't have enough information to respond, search the web.
+
+        Conversation context: ${conversationId}
+
+        Additional instructions: ${prompt}
       `,
     });
 

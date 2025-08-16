@@ -23,6 +23,8 @@ export const webSearchToolGoogle = tool({
       // * Google Api call
       const results = await googleSearchService.search(input.query);
 
+      console.log('results:', results);
+
       if (results.length === 0) {
         return `No se encontraron resultados para "${input.query}".`;
       }
