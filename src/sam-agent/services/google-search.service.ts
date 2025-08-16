@@ -1,15 +1,18 @@
 export class GoogleSearchService {
-  constructor(
-    private readonly apiKey: string,
-    private readonly searchEngineId: string,
-  ) {}
+  constructor() {}
 
   async search(query: string) {
     const response = await fetch(
-      `https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.searchEngineId}&q=${encodeURIComponent(query)}`,
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_SEARCH_ENGINE_ID}&q=${encodeURIComponent(query)}`,
     );
 
     const data = await response.json();
+
+    if (data.error) {
+      throw new Error(
+        `Google API error: ${data.error.code} - ${data.error.message}`,
+      );
+    }
 
     if (!data.items?.length) {
       return [];

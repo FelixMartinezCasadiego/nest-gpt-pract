@@ -4,10 +4,7 @@ import { z } from 'zod';
 /* Services */
 import { GoogleSearchService } from '../services';
 
-const googleSearchService = new GoogleSearchService(
-  process.env.GOOGLE_API_KEY!,
-  process.env.GOOGLE_SEARCH_ENGINE_ID!,
-);
+const googleSearchService = new GoogleSearchService();
 
 export const webSearchToolGoogle = tool({
   name: 'web_search',
